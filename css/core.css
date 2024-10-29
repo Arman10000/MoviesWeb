@@ -1,0 +1,203 @@
+html {
+    --numberOfColumns: 2;
+    --maxPageWidth: 1260px;
+    --betweenColumnsMargin: 16px;
+    --bodyHorizontalPadding: 16px;
+    --verticalMargin: 30px;
+    --cardWidth: calc((100vw - (var(--bodyHorizontalPadding) * 2) - (var(--betweenColumnsMargin) * var(--numberOfColumns))) / var(--numberOfColumns));
+    --cardMaxWidth: calc((var(--maxPageWidth) - (var(--bodyHorizontalPadding) * 2) - (var(--betweenColumnsMargin) * var(--numberOfColumns))) / var(--numberOfColumns));
+    --red: #FF3F3A;
+    --blue: #01B4E4FF;
+    --black: #000;
+    --white: #FFF;
+    overflow: auto;
+    background-color: #09161C;
+    color: var(--white);
+}
+
+@media only screen and (min-width: 500px) {
+    html {
+        --numberOfColumns:3
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    html {
+        --numberOfColumns:4
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    html {
+        --numberOfColumns:5
+    }
+}
+
+.body {
+    margin: 0 auto;
+    max-width: var(--maxPageWidth);
+    padding: 0 var(--bodyHorizontalPadding);
+}
+
+.logo {
+    display: inline-block;
+    width: 180px;
+    height: 35px;
+    margin-top: var(--verticalMargin);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-image: url("../icon/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.menu {
+    display: flex;
+    margin-top: var(--verticalMargin);
+}
+
+.menu__item {
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+.menu__item:hover {
+    color: var(--red);
+    transition: all 300ms;
+}
+
+/*=======================================================================================================================*/
+
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cardContainer__card {
+    position: relative;
+    vertical-align: top;
+    width: var(--cardWidth);
+    max-width: var(--cardMaxWidth);
+    height: auto;
+    margin-top: var(--verticalMargin);
+    cursor: pointer;
+}
+
+.cardContainer__emptyCard {
+    width: var(--cardWidth);
+    max-width: var(--cardMaxWidth);
+    height: 0;
+}
+
+.cardContainer__card:hover .cardContainer__posterContainer__playContainer {
+    opacity: 70%;
+    transition: all 300ms;
+}
+
+.cardContainer__card:hover .cardContainer__title {
+    color: var(--red);
+    transition: all 300ms;
+}
+
+.cardContainer__posterContainer {
+    position: relative;
+}
+
+.cardContainer__posterContainer__poster {
+    height: 100%;
+    width: 100%;
+}
+
+.cardContainer__posterContainer__playContainer {
+    position: absolute;
+    opacity: 00%;
+    width: 26.09%;
+    height: 17.39%;
+    background-color: var(--white);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cardContainer__posterContainer__playContainer__play {
+    position: absolute;
+    width: 41.67%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+}
+
+.cardContainer__type {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 33.48%;
+    height: 6.97%;
+    min-width: 48px;
+    min-height: 16px;
+    font-size: 14px;
+    border-bottom-left-radius: 3px;
+    top: 0;
+    left: 100%;
+    transform: translate(-100%);
+}
+
+.cardContainer__typeMovie {
+    background-color: var(--blue);
+}
+
+.cardContainer__typeSerial {
+    background-color: var(--red);
+}
+
+.cardContainer__title {
+    display: inline-block;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.loadNextPage {
+    display: inline-block;
+    margin: var(--verticalMargin) 0;
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.loadNextPage:hover {
+    color: var(--black);
+    transition: all 300ms;
+}
+
+.progress {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    z-index: 99;
+    background-color: var(--blue);
+    animation: infiniteProgress 2s linear infinite;
+}
+
+.startProgress {
+    display: block;
+}
+
+@keyframes infiniteProgress {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}

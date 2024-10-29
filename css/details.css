@@ -1,0 +1,89 @@
+@import url("core.css");
+
+html {
+    --fontSize: 16px;
+    --fontSizeBig: 25px;
+}
+
+@media only screen and (min-width: 800px) {
+    html {
+        --fontSize: 20px;
+        --fontSizeBig: 30px;
+    }
+}
+
+.infoContainer {
+    display: flex;
+    margin-top: var(--verticalMargin);
+    font-size: var(--fontSize);
+}
+
+.infoContainer__posterContainer {
+    display: flex;
+    flex-direction : column;
+    width: 20%;
+    min-width: 180px;
+    height: auto;
+}
+
+.infoContainer__posterContainer__trailerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    cursor: pointer;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: var(--blue);
+}
+
+.infoContainer__posterContainer__trailerContainer:hover {
+    color: var(--black);
+    transition: all 300ms;
+}
+
+.infoContainer__posterContainer__trailerContainer__playContainer {
+    position: relative;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background-color: var(--white);
+}
+
+.infoContainer__posterContainer__trailerContainer__playContainer__play {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%);
+}
+
+.infoContainer__posterContainer__trailerContainer__text {
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.infoContainer__detailsContainer {
+    max-width: 900px;
+    margin-left: 20px;
+}
+
+.infoContainer__detailsContainer__posterTitle {
+    font-weight: bold;
+    font-size: var(--fontSizeBig);
+}
+
+.infoContainer__detailsContainer__detailContainer {
+    display: flex;
+    margin-top: 20px;
+}
+
+.infoContainer__detailsContainer__detailContainer__title {
+    font-weight: bold;
+}
+
+.infoContainer__detailsContainer__detailContainer__value {
+    margin-left: 10px;
+}
