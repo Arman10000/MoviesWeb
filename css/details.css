@@ -30,16 +30,15 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
+    height: 40px;
     cursor: pointer;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     background-color: var(--blue);
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (max-width: 800px) {
     .infoContainer__posterContainer__trailerContainer {
-        padding: 20px;
         text-align: center;
     }
 }
