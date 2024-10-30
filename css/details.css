@@ -37,7 +37,7 @@ html {
     background-color: var(--blue);
 }
 
-@media (max-width: 768px) {
+@media only screen and (min-width: 800px) {
     .infoContainer__posterContainer__trailerContainer {
         padding: 20px;
         text-align: center;
