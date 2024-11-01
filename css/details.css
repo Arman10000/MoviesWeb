@@ -26,7 +26,8 @@ html {
     flex-direction : column;
     width: 20%;
     min-width: 180px;
-    height: auto;
+    height: calc(100% * 1.5);
+    min-height: 270px;
 }
 
 .infoContainer__posterContainer__trailerContainer {

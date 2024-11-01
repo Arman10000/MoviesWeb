@@ -31,7 +31,7 @@ export async function init(
 export function addElementsToHead() {
     const viewportMeta = document.createElement("meta")
     viewportMeta.name = "viewport"
-    viewportMeta.content = "width=device-width, initial-scale=1"
+    viewportMeta.content = "width=device-width, initial-scale=1.0"
 
     const shortcutIcon = document.createElement("link")
     shortcutIcon.rel = "shortcut icon"
