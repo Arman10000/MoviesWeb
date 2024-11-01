@@ -17,8 +17,7 @@ html {
 img {
     display: inline-block;
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 100%;
 }
 
 .infoContainer {
@@ -30,10 +29,12 @@ img {
 
 .infoContainer__posterContainer {
     display: flex;
+    position: relative;
     flex-direction : column;
     width: 20%;
     min-width: 180px;
-    height: auto;
+    height: calc(100% * 1.5);
+    min-height: 270px;
 }
 
 .infoContainer__posterContainer__trailerContainer {
