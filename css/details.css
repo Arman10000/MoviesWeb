@@ -27,6 +27,7 @@ html {
     width: 20%;
     min-width: 180px;
     height: auto;
+    object-fit: cover;
 }
 
 .infoContainer__posterContainer__trailerContainer {
