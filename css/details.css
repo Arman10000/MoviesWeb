@@ -30,15 +30,17 @@ html {
     min-height: 270px;
 }
 
-.infoContainer__posterContainer img {
-    width: 180px;
-    height: 270px;
+img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
 
 .infoContainer__posterContainer__trailerContainer {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 40px;
     cursor: pointer;
     border-bottom-left-radius: 3px;
