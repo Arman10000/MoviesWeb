@@ -30,7 +30,7 @@ html {
     min-height: 270px;
 }
 
-img {
+.infoContainer__posterContainer img {
     width: 180px;
     height: 270px;
 }
