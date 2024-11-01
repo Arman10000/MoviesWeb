@@ -1,14 +1,16 @@
 @import url("core.css");
 
 html {
-    --fontSize: 16px;
-    --fontSizeBig: 25px;
+    --fontSize: 20px;
+    --fontSizeBig: 30px;
+    --fontSizeTrailerText: 16px;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (max-width: 768px) {
     html {
-        --fontSize: 20px;
-        --fontSizeBig: 30px;
+        --fontSize: 14px;
+        --fontSizeBig: 20px;
+        --fontSizeTrailerText: 14px;
     }
 }
 
@@ -63,7 +65,7 @@ html {
 .infoContainer__posterContainer__trailerContainer__text {
     display: inline;
     font-weight: bold;
-    font-size: 14px;
+    font-size: var(--fontSizeTrailerText);
     margin-left: 10px;
 }
 
