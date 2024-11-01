@@ -29,7 +29,6 @@ img {
 
 .infoContainer__posterContainer {
     display: flex;
-    position: relative;
     flex-direction : column;
     width: 20%;
     min-width: 180px;
