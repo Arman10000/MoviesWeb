@@ -3,28 +3,30 @@
 html {
     --fontSize: 20px;
     --fontSizeBig: 30px;
-    --fontSizeTrailerText: 16px;
 }
 
 @media only screen and (max-width: 768px) {
     html {
         --fontSize: 14px;
         --fontSizeBig: 20px;
-        --fontSizeTrailerText: 14px;
     }
 }
 
 img {
-    display: inline-block;
+    display: block;
     width: 100%;
     height: 100%;
 }
 
 .infoContainer {
-    display: flex;
+    display: none;
     margin-top: var(--verticalMargin);
     padding-bottom: var(--verticalMargin);
     font-size: var(--fontSize);
+}
+
+.infoContainerShow {
+    display: flex;
 }
 
 .infoContainer__posterContainer {
@@ -33,11 +35,10 @@ img {
     width: 20%;
     min-width: 180px;
     height: calc(100% * 1.5);
-    min-height: 270px;
 }
 
 .infoContainer__posterContainer__trailerContainer {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -46,6 +47,10 @@ img {
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     background-color: var(--blue);
+}
+
+.infoContainer__posterContainer__trailerContainerShow {
+    display: flex;
 }
 
 .infoContainer__posterContainer__trailerContainer:hover {
@@ -73,7 +78,6 @@ img {
 .infoContainer__posterContainer__trailerContainer__text {
     display: inline;
     font-weight: bold;
-    font-size: var(--fontSizeTrailerText);
     margin-left: 10px;
 }
 

@@ -42,13 +42,9 @@ async function downloadDetails() {
     const headTitle = document.getElementById("headTitle")
     headTitle.innerText = contentDetails.title
 
-    const poster = document.createElement("img")
+    const poster = document.getElementById("poster")
     poster.src = getPosterPath(contentDetails.posterPath)
     poster.alt = contentDetails.title
-
-    const posterContainer = document.createElement("div")
-    posterContainer.classList.add("infoContainer__posterContainer")
-    posterContainer.append(poster)
 
     let videosUrl = getVideosUrl(contentId, contentType, RU)
     let videos = await getVideos(videosUrl)
@@ -70,124 +66,51 @@ async function downloadDetails() {
     if (isVideos) {
         const videoSrc = getVideoSrc(videos)
         if (videoSrc !== null) {
-            const play = document.createElement("img")
-            play.classList.add("infoContainer__posterContainer__trailerContainer__playContainer__play")
-            play.src = "icon/play.png"
-            play.alt = "play"
-
-            const playContainer = document.createElement("div")
-            playContainer.classList.add("infoContainer__posterContainer__trailerContainer__playContainer")
-            playContainer.append(play)
-
-            const trailerText = document.createElement("span")
-            trailerText.classList.add("infoContainer__posterContainer__trailerContainer__text")
-            trailerText.innerText = "Смотреть трейлер"
-
-            const trailerContainer = document.createElement("div")
-            trailerContainer.classList.add("infoContainer__posterContainer__trailerContainer")
+            const trailerContainer = document.getElementById("trailerContainer")
+            trailerContainer.classList.add("infoContainer__posterContainer__trailerContainerShow")
             trailerContainer.addEventListener("click", () => {
                 showVideo(videoSrc)
             })
-            trailerContainer.append(playContainer)
-            trailerContainer.append(trailerText)
 
-            posterContainer.append(trailerContainer)
+            const trailerContainerText = document.getElementById("trailerContainerText")
+            const resizeObserver = new ResizeObserver(entries => {
+                for (let entry of entries) {
+                    const width = entry.contentRect.width;
+                    let fontSize = width * 0.07
+                    if (fontSize < 14) {
+                        fontSize = 14
+                    }
+                    trailerContainerText.style.fontSize = `${fontSize}px`;
+                }
+            });
+            resizeObserver.observe(trailerContainer);
         }
     }
 
-    const ratingsTitle = document.createElement("h2")
-    ratingsTitle.classList.add("infoContainer__detailsContainer__detailContainer__title")
-    ratingsTitle.innerText = "Рейтинги:"
-
-    const ratingsValue = document.createElement("span")
-    ratingsValue.classList.add("infoContainer__detailsContainer__detailContainer__value")
-    ratingsValue.innerText = `TMDb: ${contentDetails.ratingsIMDb.toFixed(1)}`
-
-    const ratingsContainer = document.createElement("div")
-    ratingsContainer.classList.add("infoContainer__detailsContainer__detailContainer")
-    ratingsContainer.append(ratingsTitle)
-    ratingsContainer.append(ratingsValue)
-
-    const timeTitle = document.createElement("h2")
-    timeTitle.classList.add("infoContainer__detailsContainer__detailContainer__title")
-    timeTitle.innerText = "Время:"
-
-    const timeValue = document.createElement("span")
-    timeValue.classList.add("infoContainer__detailsContainer__detailContainer__value")
-    timeValue.innerText = getTime(contentDetails.time)
-
-    const timeContainer = document.createElement("div")
-    timeContainer.classList.add("infoContainer__detailsContainer__detailContainer")
-    timeContainer.append(timeTitle)
-    timeContainer.append(timeValue)
-
-    const releaseDateTitle = document.createElement("h2")
-    releaseDateTitle.classList.add("infoContainer__detailsContainer__detailContainer__title")
-    releaseDateTitle.innerText = "Дата выхода:"
-
-    const releaseDateValue = document.createElement("span")
-    releaseDateValue.classList.add("infoContainer__detailsContainer__detailContainer__value")
-    releaseDateValue.innerText = getReleaseDate(contentDetails.releaseDate)
-
-    const releaseDateContainer = document.createElement("div")
-    releaseDateContainer.classList.add("infoContainer__detailsContainer__detailContainer")
-    releaseDateContainer.append(releaseDateTitle)
-    releaseDateContainer.append(releaseDateValue)
-
-    const countryOriginTitle = document.createElement("h2")
-    countryOriginTitle.classList.add("infoContainer__detailsContainer__detailContainer__title")
-    countryOriginTitle.innerText = "Страна:"
-
-    const countryOriginValue = document.createElement("span")
-    countryOriginValue.classList.add("infoContainer__detailsContainer__detailContainer__value")
-    countryOriginValue.innerText = getCountriesOrigin(contentDetails.countriesOrigin)
-
-    const countryOriginContainer = document.createElement("div")
-    countryOriginContainer.classList.add("infoContainer__detailsContainer__detailContainer")
-    countryOriginContainer.append(countryOriginTitle)
-    countryOriginContainer.append(countryOriginValue)
-
-    const genreTitle = document.createElement("h2")
-    genreTitle.classList.add("infoContainer__detailsContainer__detailContainer__title")
-    genreTitle.innerText = "Жанр:"
-
-    const genreValue = document.createElement("span")
-    genreValue.classList.add("infoContainer__detailsContainer__detailContainer__value")
-    genreValue.innerText = getGenres(contentDetails.genres)
-
-    const genreContainer = document.createElement("div")
-    genreContainer.classList.add("infoContainer__detailsContainer__detailContainer")
-    genreContainer.append(genreTitle)
-    genreContainer.append(genreValue)
-
-    const descriptionValue = document.createElement("span")
-    descriptionValue.innerText = contentDetails.description
-
-    const descriptionContainer = document.createElement("div")
-    descriptionContainer.classList.add("infoContainer__detailsContainer__detailContainer")
-    descriptionContainer.append(descriptionValue)
-
-    const posterTitle = document.createElement("h2")
-    posterTitle.classList.add("infoContainer__detailsContainer__posterTitle")
+    const posterTitle = document.getElementById("posterTitle")
     posterTitle.innerText = contentDetails.title
 
-    const detailsContainer = document.createElement("div")
-    detailsContainer.classList.add("infoContainer__detailsContainer")
-    detailsContainer.append(posterTitle)
-    detailsContainer.append(ratingsContainer)
-    detailsContainer.append(timeContainer)
-    detailsContainer.append(releaseDateContainer)
-    detailsContainer.append(countryOriginContainer)
-    detailsContainer.append(genreContainer)
-    detailsContainer.append(descriptionContainer)
+    const rating = document.getElementById("rating")
+    rating.innerText = `TMDb: ${contentDetails.ratingsIMDb.toFixed(1)}`
 
-    const infoContainer = document.createElement("div")
-    infoContainer.classList.add("infoContainer")
-    infoContainer.append(posterContainer)
-    infoContainer.append(detailsContainer)
+    const time = document.getElementById("time")
+    time.innerText = getTime(contentDetails.time)
 
-    const main = document.querySelector("main")
-    main.append(infoContainer)
+    const releaseDate = document.getElementById("releaseDate")
+    releaseDate.innerText = getReleaseDate(contentDetails.releaseDate)
+
+    const countriesOrigin = document.getElementById("countriesOrigin")
+    countriesOrigin.innerText = getCountriesOrigin(contentDetails.countriesOrigin)
+
+    const genres = document.getElementById("genres")
+    genres.innerText = getGenres(contentDetails.genres)
+
+    const description = document.getElementById("description")
+    description.innerText = contentDetails.description
+
+    const infoContainer = document.getElementById("infoContainer")
+    infoContainer.classList.add("infoContainerShow")
+
     stopProgress()
 }
 
