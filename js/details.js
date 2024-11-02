@@ -76,7 +76,7 @@ async function downloadDetails() {
             const resizeObserver = new ResizeObserver(entries => {
                 for (let entry of entries) {
                     const width = entry.contentRect.width;
-                    let fontSize = width * 0.07
+                    let fontSize = width * 0.065
                     if (fontSize < 14) {
                         fontSize = 14
                     }
