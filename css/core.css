@@ -90,15 +90,15 @@ html {
     height: 0;
 }
 
-.cardContainer__card:hover .cardContainer__posterContainer__playContainer {
-    opacity: 70%;
-    transition: all 300ms;
-}
+/*.cardContainer__card:hover .cardContainer__posterContainer__playContainer {*/
+/*    opacity: 70%;*/
+/*    transition: all 300ms;*/
+/*}*/
 
-.cardContainer__card:hover .cardContainer__title {
-    color: var(--red);
-    transition: all 300ms;
-}
+/*.cardContainer__card:hover .cardContainer__title {*/
+/*    color: var(--red);*/
+/*    transition: all 300ms;*/
+/*}*/
 
 .cardContainer__card:active .cardContainer__posterContainer__playContainer {
     opacity: 70%;
