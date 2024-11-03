@@ -284,8 +284,8 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
 }
 
 function addMenuListener(items) {
-    let isMobile = false
     items.forEach(item => {
+        let isMobile = false
         item.addEventListener("touchstart", function () {
             isMobile = true
             addMenuEffect(item, isMobile)
