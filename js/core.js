@@ -278,8 +278,8 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
 function addMenuListener(moviesItem, serialsItem) {
     moviesItem.addEventListener("click", function () {
         addMenuEffect(moviesItem, isMobile)
-        window.location.href = "movies.html"
         removeMenuEffect(moviesItem, isMobile)
+        window.location.href = "movies.html"
     })
     serialsItem.addEventListener("click", function () {
         window.location.href = "serials.html"
