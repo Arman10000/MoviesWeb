@@ -277,8 +277,6 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
 
 function addMenuListener(moviesItem, serialsItem) {
     moviesItem.addEventListener("click", function () {
-        addMenuEffect(moviesItem, isMobile)
-        removeMenuEffect(moviesItem, isMobile)
         window.location.href = "movies.html"
     })
     serialsItem.addEventListener("click", function () {
@@ -289,10 +287,10 @@ function addMenuListener(moviesItem, serialsItem) {
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
             isMobile = true
-            // addMenuEffect(item, isMobile)
+            //добавить эффект нажатия
         })
         item.addEventListener("touchend", function () {
-            // removeMenuEffect(item, isMobile)
+            //удалить эффект нажатия
         })
         item.addEventListener("mouseenter", function () {
             if (isMobile) {
