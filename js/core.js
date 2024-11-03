@@ -63,7 +63,7 @@ export function addElementsToHeader() {
 
     const serialsItem = document.createElement("li")
     serialsItem.classList.add("menu__item")
-    moviesItem.innerText = "Сериалы"
+    serialsItem.innerText = "Сериалы"
 
     addMenuListener([moviesItem, serialsItem])
 
