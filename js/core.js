@@ -284,13 +284,15 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
 }
 
 function addMenuListener(items) {
+    let isMobile = false
     items.forEach(item => {
-        let isMobile = false
         item.addEventListener("touchstart", function () {
             isMobile = true
+            alert(`touchstart ${isMobile}`)
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
+            alert(`touchend ${isMobile}`)
             removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
@@ -298,10 +300,12 @@ function addMenuListener(items) {
                 isMobile = false
                 return
             }
+            alert(`mouseenter`)
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseleave", function () {
             if (isMobile) return
+            alert(`mouseleave`)
             removeMenuEffect(item, isMobile)
         })
     })
