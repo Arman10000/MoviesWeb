@@ -49,23 +49,23 @@ export function addElementsToHeader() {
     logoRef.title = "На главную"
     logoRef.href = "main.html"
 
-    const moviesRef = document.createElement("a")
-    moviesRef.href = "movies.html"
-    moviesRef.innerText = "Фильмы"
-
-    const serialsRef = document.createElement("a")
-    serialsRef.href = "serials.html"
-    serialsRef.innerText = "Сериалы"
-
-    addMenuListener([moviesRef, serialsRef])
+    // const moviesRef = document.createElement("a")
+    // moviesRef.href = "movies.html"
+    // moviesRef.innerText = "Фильмы"
+    //
+    // const serialsRef = document.createElement("a")
+    // serialsRef.href = "serials.html"
+    // serialsRef.innerText = "Сериалы"
 
     const moviesItem = document.createElement("li")
     moviesItem.classList.add("menu__item")
-    moviesItem.append(moviesRef)
+    moviesItem.innerText = "Фильмы"
 
     const serialsItem = document.createElement("li")
     serialsItem.classList.add("menu__item")
-    serialsItem.append(serialsRef)
+    moviesItem.innerText = "Сериалы"
+
+    addMenuListener([moviesItem, serialsItem])
 
     const menu = document.createElement("ul")
     menu.classList.add("menu")
@@ -288,11 +288,11 @@ function addMenuListener(items) {
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
             isMobile = true
-            alert(`touchstart ${isMobile}`)
+            // alert(`touchstart ${isMobile}`)
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
-            alert(`touchend ${isMobile}`)
+            // alert(`touchend ${isMobile}`)
             removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
@@ -300,12 +300,12 @@ function addMenuListener(items) {
                 isMobile = false
                 return
             }
-            alert(`mouseenter`)
+            // alert(`mouseenter`)
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseleave", function () {
             if (isMobile) return
-            alert(`mouseleave`)
+            // alert(`mouseleave`)
             removeMenuEffect(item, isMobile)
         })
     })
