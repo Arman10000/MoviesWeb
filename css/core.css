@@ -59,6 +59,7 @@ html {
 .menu__item {
     font-weight: bold;
     margin-right: 40px;
+    cursor: pointer;
 }
 
 .itemEffect {
