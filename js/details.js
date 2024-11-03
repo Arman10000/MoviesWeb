@@ -4,6 +4,8 @@ import {
     startProgress,
     stopProgress,
     getPosterPath,
+    addButtonEffect,
+    removeButtonEffect,
     BAS_URL, RU,
     MOVIE, SERIAL, OPTIONS,
     Movie, Serial
@@ -70,6 +72,25 @@ async function downloadDetails() {
             trailerContainer.classList.add("infoContainer__posterContainer__trailerContainerShow")
             trailerContainer.addEventListener("click", () => {
                 showVideo(videoSrc)
+            })
+            let isMobile = false
+            trailerContainer.addEventListener("touchstart", function () {
+                isMobile = true
+                addButtonEffect(trailerContainer, isMobile)
+            })
+            trailerContainer.addEventListener("touchend", function () {
+                removeButtonEffect(trailerContainer, isMobile)
+            })
+            trailerContainer.addEventListener("mouseenter", function () {
+                if (isMobile) {
+                    isMobile = false
+                    return
+                }
+                addButtonEffect(trailerContainer, isMobile)
+            })
+            trailerContainer.addEventListener("mouseleave", function () {
+                if (isMobile) return
+                removeButtonEffect(trailerContainer, isMobile)
             })
 
             const trailerContainerText = document.getElementById("trailerContainerText")

@@ -17,19 +17,19 @@ html {
 
 @media only screen and (min-width: 500px) {
     html {
-        --numberOfColumns:3
+        --numberOfColumns: 3
     }
 }
 
 @media only screen and (min-width: 700px) {
     html {
-        --numberOfColumns:4
+        --numberOfColumns: 4
     }
 }
 
 @media only screen and (min-width: 900px) {
     html {
-        --numberOfColumns:5
+        --numberOfColumns: 5
     }
 }
 
@@ -61,8 +61,11 @@ html {
     margin-right: 40px;
 }
 
-.menu__item:hover {
+.itemEffect {
     color: var(--red);
+}
+
+.transitionEffect {
     transition: all 300ms;
 }
 
@@ -90,16 +93,6 @@ html {
     height: 0;
 }
 
-.cardContainer__card:hover .cardContainer__posterContainer__playContainer {
-    opacity: 70%;
-    transition: all 300ms;
-}
-
-.cardContainer__card:hover .cardContainer__title {
-    color: var(--red);
-    transition: all 300ms;
-}
-
 .cardContainer__posterContainer {
     position: relative;
 }
@@ -119,6 +112,10 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.playContainerEffect {
+    opacity: 70%;
 }
 
 .cardContainer__posterContainer__playContainer__play {
@@ -160,6 +157,10 @@ html {
     margin-top: 12px;
 }
 
+.titleEffect {
+    color: var(--red);
+}
+
 .loadNextPage {
     display: inline-block;
     margin: var(--verticalMargin) 0;
@@ -172,9 +173,8 @@ html {
     color: var(--white);
 }
 
-.loadNextPage:hover {
+.loadNextPageEffect {
     color: var(--black);
-    transition: all 300ms;
 }
 
 .progress {

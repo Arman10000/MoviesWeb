@@ -53,13 +53,15 @@ export function addElementsToHeader() {
     moviesRef.href = "movies.html"
     moviesRef.innerText = "Фильмы"
 
-    const moviesItem = document.createElement("li")
-    moviesItem.classList.add("menu__item")
-    moviesItem.append(moviesRef)
-
     const serialsRef = document.createElement("a")
     serialsRef.href = "serials.html"
     serialsRef.innerText = "Сериалы"
+
+    addMenuListener([moviesRef, serialsRef])
+
+    const moviesItem = document.createElement("li")
+    moviesItem.classList.add("menu__item")
+    moviesItem.append(moviesRef)
 
     const serialsItem = document.createElement("li")
     serialsItem.classList.add("menu__item")
@@ -149,7 +151,26 @@ function addCards(json, contentType) {
     card.dataset.contentId = json.id
     card.dataset.contentType = contentType
     card.addEventListener("click", function () {
-        window.location.href = `details.html?contentType=${this.dataset.contentType}&contentId=${this.dataset.contentId}`
+        openDetails(this.dataset.contentType, this.dataset.contentId)
+    })
+    let isMobile = false
+    card.addEventListener("touchstart", function () {
+        isMobile = true
+        addCardEffect(playContainer, cardTitle, isMobile)
+    })
+    card.addEventListener("touchend", function () {
+        removeCardEffect(playContainer, cardTitle, isMobile)
+    })
+    card.addEventListener("mouseenter", function () {
+        if (isMobile) {
+            isMobile = false
+            return
+        }
+        addCardEffect(playContainer, cardTitle, isMobile)
+    })
+    card.addEventListener("mouseleave", function () {
+        if (isMobile) return
+        removeCardEffect(playContainer, cardTitle, isMobile)
     })
 
     let contentDetails
@@ -218,9 +239,96 @@ async function createButton() {
             downloadContent()
         }
     })
+    let isMobile = false
+    loadNextPage.addEventListener("touchstart", function () {
+        isMobile = true
+        addButtonEffect(loadNextPage, isMobile)
+    })
+    loadNextPage.addEventListener("touchend", function () {
+        removeButtonEffect(loadNextPage, isMobile)
+    })
+    loadNextPage.addEventListener("mouseenter", function () {
+        if (isMobile) {
+            isMobile = false
+            return
+        }
+        addButtonEffect(loadNextPage, isMobile)
+    })
+    loadNextPage.addEventListener("mouseleave", function () {
+        if (isMobile) return
+        removeButtonEffect(loadNextPage, isMobile)
+    })
 
     const main = document.querySelector("main")
     main.append(loadNextPage)
+}
+
+function openDetails(contentType, contentId) {
+    window.location.href = `details.html?contentType=${contentType}&contentId=${contentId}`
+}
+
+function addCardEffect(playContainer, cardTitle, isMobile) {
+    playContainer.classList.add("playContainerEffect")
+    cardTitle.classList.add("titleEffect")
+    if (isMobile) return
+    playContainer.classList.add("transitionEffect")
+    cardTitle.classList.add("transitionEffect")
+}
+
+function removeCardEffect(playContainer, cardTitle, isMobile) {
+    playContainer.classList.remove("playContainerEffect")
+    cardTitle.classList.remove("titleEffect")
+    if (isMobile) return
+    playContainer.classList.remove("transitionEffect")
+    cardTitle.classList.remove("transitionEffect")
+}
+
+function addMenuListener(items) {
+    let isMobile = false
+    items.forEach(item => {
+        item.addEventListener("touchstart", function () {
+            isMobile = true
+            addMenuEffect(item, isMobile)
+        })
+        item.addEventListener("touchend", function () {
+            removeMenuEffect(item, isMobile)
+        })
+        item.addEventListener("mouseenter", function () {
+            if (isMobile) {
+                isMobile = false
+                return
+            }
+            addMenuEffect(item, isMobile)
+        })
+        item.addEventListener("mouseleave", function () {
+            if (isMobile) return
+            removeMenuEffect(item, isMobile)
+        })
+    })
+}
+
+function addMenuEffect(item, isMobile) {
+    item.classList.add("itemEffect")
+    if (isMobile) return
+    item.classList.add("transitionEffect")
+}
+
+function removeMenuEffect(item, isMobile) {
+    item.classList.remove("itemEffect")
+    if (isMobile) return
+    item.classList.remove("transitionEffect")
+}
+
+export function addButtonEffect(button, isMobile) {
+    button.classList.add("loadNextPageEffect")
+    if (isMobile) return
+    button.classList.add("transitionEffect")
+}
+
+export function removeButtonEffect(button, isMobile) {
+    button.classList.remove("loadNextPageEffect")
+    if (isMobile) return
+    button.classList.remove("transitionEffect")
 }
 
 export function startProgress() {
