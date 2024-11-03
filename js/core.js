@@ -65,7 +65,7 @@ export function addElementsToHeader() {
     serialsItem.classList.add("menu__item")
     serialsItem.innerText = "Сериалы"
 
-    addMenuListener([moviesItem, serialsItem])
+    addMenuListener(moviesItem, serialsItem)
 
     const menu = document.createElement("ul")
     menu.classList.add("menu")
@@ -283,16 +283,21 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
     cardTitle.classList.remove("transitionEffect")
 }
 
-function addMenuListener(items) {
+function addMenuListener(moviesItem, serialsItem) {
+    moviesItem.addEventListener("click", function () {
+        window.location.href = "movies.html"
+    })
+    serialsItem.addEventListener("click", function () {
+        window.location.href = "serials.html"
+    })
+    const items = [moviesItem, serialsItem]
     let isMobile = false
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
             isMobile = true
-            // alert(`touchstart ${isMobile}`)
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
-            // alert(`touchend ${isMobile}`)
             removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
@@ -300,12 +305,10 @@ function addMenuListener(items) {
                 isMobile = false
                 return
             }
-            // alert(`mouseenter`)
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseleave", function () {
             if (isMobile) return
-            // alert(`mouseleave`)
             removeMenuEffect(item, isMobile)
         })
     })

@@ -59,7 +59,7 @@ html {
 .menu__item {
     font-weight: bold;
     margin-right: 40px;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .itemEffect {
