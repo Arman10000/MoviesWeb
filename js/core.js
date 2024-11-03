@@ -49,14 +49,6 @@ export function addElementsToHeader() {
     logoRef.title = "На главную"
     logoRef.href = "main.html"
 
-    // const moviesRef = document.createElement("a")
-    // moviesRef.href = "movies.html"
-    // moviesRef.innerText = "Фильмы"
-    //
-    // const serialsRef = document.createElement("a")
-    // serialsRef.href = "serials.html"
-    // serialsRef.innerText = "Сериалы"
-
     const moviesItem = document.createElement("li")
     moviesItem.classList.add("menu__item")
     moviesItem.innerText = "Фильмы"
@@ -285,7 +277,9 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
 
 function addMenuListener(moviesItem, serialsItem) {
     moviesItem.addEventListener("click", function () {
+        addMenuEffect(moviesItem, isMobile)
         window.location.href = "movies.html"
+        removeMenuEffect(moviesItem, isMobile)
     })
     serialsItem.addEventListener("click", function () {
         window.location.href = "serials.html"
@@ -295,10 +289,10 @@ function addMenuListener(moviesItem, serialsItem) {
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
             isMobile = true
-            addMenuEffect(item, isMobile)
+            // addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
-            removeMenuEffect(item, isMobile)
+            // removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
             if (isMobile) {
