@@ -287,6 +287,7 @@ function addMenuListener(moviesItem, serialsItem) {
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
             isMobile = true
+            alert("touchstart")
             //добавить эффект нажатия
         })
         item.addEventListener("touchend", function () {
