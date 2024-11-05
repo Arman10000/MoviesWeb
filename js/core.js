@@ -145,19 +145,15 @@ function addCards(json, contentType) {
     card.addEventListener("click", function () {
         openDetails(this.dataset.contentType, this.dataset.contentId)
     })
-    let isMobile = false
+    const isMobile = checkIsMobile()
     card.addEventListener("touchstart", function () {
-        isMobile = true
         addCardEffect(playContainer, cardTitle, isMobile)
     })
     card.addEventListener("touchend", function () {
         removeCardEffect(playContainer, cardTitle, isMobile)
     })
     card.addEventListener("mouseenter", function () {
-        if (isMobile) {
-            isMobile = false
-            return
-        }
+        if (isMobile) return
         addCardEffect(playContainer, cardTitle, isMobile)
     })
     card.addEventListener("mouseleave", function () {
@@ -231,19 +227,15 @@ async function createButton() {
             downloadContent()
         }
     })
-    let isMobile = false
+    const isMobile = checkIsMobile()
     loadNextPage.addEventListener("touchstart", function () {
-        isMobile = true
         addButtonEffect(loadNextPage, isMobile)
     })
     loadNextPage.addEventListener("touchend", function () {
         removeButtonEffect(loadNextPage, isMobile)
     })
     loadNextPage.addEventListener("mouseenter", function () {
-        if (isMobile) {
-            isMobile = false
-            return
-        }
+        if (isMobile) return
         addButtonEffect(loadNextPage, isMobile)
     })
     loadNextPage.addEventListener("mouseleave", function () {
@@ -277,7 +269,7 @@ function removeCardEffect(playContainer, cardTitle, isMobile) {
 
 function addMenuListener(moviesItem, serialsItem) {
     moviesItem.addEventListener("click", function () {
-        // window.location.href = "movies.html"
+        window.location.href = "movies.html"
     })
     serialsItem.addEventListener("click", function () {
         window.location.href = "serials.html"
