@@ -184,7 +184,7 @@ html {
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
+    height: 3px;
     z-index: 99;
     background-color: var(--blue);
     animation: infiniteProgress 2s linear infinite;
