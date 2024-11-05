@@ -283,15 +283,13 @@ function addMenuListener(moviesItem, serialsItem) {
         window.location.href = "serials.html"
     })
     const items = [moviesItem, serialsItem]
-    let isMobile = false
+    let isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone/i.test(navigator.userAgent);
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
-            isMobile = true
-            //добавить эффект нажатия
+            // isMobile = true
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
-            //удалить эффект нажатия
             removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
