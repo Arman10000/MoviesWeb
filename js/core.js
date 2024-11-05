@@ -283,20 +283,16 @@ function addMenuListener(moviesItem, serialsItem) {
         window.location.href = "serials.html"
     })
     const items = [moviesItem, serialsItem]
-    let isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|Windows Phone/i.test(navigator.userAgent);
+    const isMobile = checkIsMobile()
     items.forEach(item => {
         item.addEventListener("touchstart", function () {
-            // isMobile = true
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
             removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
-            if (isMobile) {
-                isMobile = false
-                return
-            }
+            if (isMobile) return
             addMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseleave", function () {
@@ -304,6 +300,10 @@ function addMenuListener(moviesItem, serialsItem) {
             removeMenuEffect(item, isMobile)
         })
     })
+}
+
+function checkIsMobile() {
+    return /Android|iPhone|iPad|iPod|HarmonyOS/i.test(navigator.userAgent)
 }
 
 function addMenuEffect(item, isMobile) {
