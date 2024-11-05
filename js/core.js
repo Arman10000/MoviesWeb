@@ -297,7 +297,7 @@ function addMenuListener(moviesItem, serialsItem) {
                 isMobile = false
                 return
             }
-            // addMenuEffect(item, isMobile)
+            addMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseleave", function () {
             if (isMobile) return
