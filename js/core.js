@@ -294,6 +294,7 @@ function addMenuListener(moviesItem, serialsItem) {
             //удалить эффект нажатия
         })
         item.addEventListener("mouseenter", function () {
+            alert("mouseenter")
             if (isMobile) {
                 isMobile = false
                 return
