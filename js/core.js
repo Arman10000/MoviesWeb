@@ -288,9 +288,11 @@ function addMenuListener(moviesItem, serialsItem) {
         item.addEventListener("touchstart", function () {
             isMobile = true
             //добавить эффект нажатия
+            addMenuEffect(item, isMobile)
         })
         item.addEventListener("touchend", function () {
             //удалить эффект нажатия
+            removeMenuEffect(item, isMobile)
         })
         item.addEventListener("mouseenter", function () {
             if (isMobile) {
