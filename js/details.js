@@ -1,8 +1,6 @@
 import {
     addElementsToHead,
     addElementsToHeader,
-    startProgress,
-    stopProgress,
     getPosterPath,
     addButtonEffect,
     removeButtonEffect,
@@ -20,7 +18,6 @@ addElementsToHeader()
 await downloadDetails()
 
 async function downloadDetails() {
-    startProgress()
     const urlSearchParams = new URLSearchParams(window.location.search)
     const contentType = urlSearchParams.get("contentType")
     const contentId = urlSearchParams.get("contentId")
@@ -131,8 +128,6 @@ async function downloadDetails() {
 
     const infoContainer = document.getElementById("infoContainer")
     infoContainer.classList.add("infoContainerShow")
-
-    stopProgress()
 }
 
 async function getContent(url) {

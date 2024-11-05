@@ -73,7 +73,6 @@ export function addElementsToHeader() {
 }
 
 async function downloadContent() {
-    startProgress()
     page++
 
     let movies = []
@@ -114,8 +113,6 @@ async function downloadContent() {
         addEmptyCards()
         await createButton()
     }
-
-    stopProgress()
     isLoading = false
 }
 
@@ -221,10 +218,12 @@ async function createButton() {
     const loadNextPage = document.createElement("button")
     loadNextPage.classList.add("loadNextPage")
     loadNextPage.innerText = "Загрузить ещё"
-    loadNextPage.addEventListener("click", () => {
+    loadNextPage.addEventListener("click", async function() {
         if (!isLoading) {
             isLoading = true
-            downloadContent()
+            startProgress()
+            await downloadContent()
+            stopProgress()
         }
     })
     const isMobile = checkIsMobile()
@@ -322,12 +321,12 @@ export function removeButtonEffect(button, isMobile) {
     button.classList.remove("transitionEffect")
 }
 
-export function startProgress() {
+function startProgress() {
     const progress = document.getElementById("progress")
     progress.classList.add("startProgress")
 }
 
-export function stopProgress() {
+function stopProgress() {
     const progress = document.getElementById("progress")
     progress.classList.remove("startProgress")
 }
