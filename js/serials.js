@@ -1,9 +1,9 @@
-import {init} from "./core.js";
+import {
+    addElementsToHead,
+    addElementsToHeader,
+    downloadContent
+} from "./core.js";
 
-const IS_MOVIES = false
-const IS_SERIALS = true
-
-await init(
-    IS_MOVIES,
-    IS_SERIALS
-)
+addElementsToHead()
+addElementsToHeader()
+await downloadContent(false, true)

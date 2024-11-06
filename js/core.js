@@ -14,19 +14,6 @@ export const OPTIONS = {
     headers: {accept: "application/json", Authorization: TOKEN}
 }
 const cardContainer = document.getElementById("cardContainer")
-let isMovies
-let isSerials
-
-export async function init(
-    isMoviesP,
-    isSerialsP
-) {
-    isMovies = isMoviesP
-    isSerials = isSerialsP
-    addElementsToHead()
-    addElementsToHeader()
-    await downloadContent()
-}
 
 export function addElementsToHead() {
     const viewportMeta = document.createElement("meta")
@@ -72,7 +59,7 @@ export function addElementsToHeader() {
     header.append(nav)
 }
 
-async function downloadContent() {
+export async function downloadContent(isMovies, isSerials) {
     page++
 
     let movies = []
@@ -111,7 +98,7 @@ async function downloadContent() {
 
     if (page === 1) {
         addEmptyCards()
-        await createButton()
+        await createButton(isMovies, isSerials)
     }
     isLoading = false
 }
@@ -214,7 +201,7 @@ function addEmptyCards() {
     }
 }
 
-async function createButton() {
+async function createButton(isMovies, isSerials) {
     const loadNextPage = document.createElement("button")
     loadNextPage.classList.add("loadNextPage")
     loadNextPage.innerText = "Загрузить ещё"
@@ -222,7 +209,7 @@ async function createButton() {
         if (!isLoading) {
             isLoading = true
             startProgress()
-            await downloadContent()
+            await downloadContent(isMovies, isSerials)
             stopProgress()
         }
     })
